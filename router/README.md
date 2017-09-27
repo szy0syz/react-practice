@@ -2,6 +2,8 @@
 
 ## zf_CH01 跑通路由
 
+![router1](http://ofx24fene.bkt.clouddn.com//img/react/Router1.png)
+
 ## zf_CH02 完成组件简单模块化和引入bootstrap
 
 ## zf_CH03 嵌套路由
