@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import {
   // v4版本后，路由称为“生命式路由”
   HashRouter as Router, // route的容器
-  Route // 一条路由
+  Route, // 一条路由
+  Link
 } from 'react-router-dom';
-import logo from '../logo.svg';
+
+import logo from '../logo.svg'; // 好吧，logo文件都import，我算服了。
 import './App.css';
 
 import Home from './Home';
@@ -19,15 +21,34 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <div>
-          <Router>
-            <div>
-              <Route path="/home" component={Home}></Route>
-              <Route path="/User" component={User}></Route>
-              <Route path="/profile" component={Profile}></Route>
+        <Router>
+          <div>
+            <nav className="navbar navbar-inverse">
+              <div className="container-fluid">
+                <div className="narbar-header">
+                  <div className="navbar-brand">
+                    用户管理
+              </div>
+                </div>
+                <ul className="nav navbar-nav">
+                  <li><Link to="/home">首页</Link></li>
+                  <li><Link to="/user">用户管理</Link></li>
+                  <li><Link to="/profile">个人设置</Link></li>
+                </ul>
+              </div>
+            </nav>
+            <div className="container">
+              <div className="row">
+                <div className="col-sm-12">
+                  <Route path="/home" component={Home}></Route>
+                  <Route path="/user" component={User}></Route>
+                  <Route path="/profile" component={Profile}></Route>
+                </div>
+              </div>
             </div>
-          </Router>
-        </div>
+          </div>
+
+        </Router>
       </div>
     );
   }
