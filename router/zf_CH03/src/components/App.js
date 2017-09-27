@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   // v4版本后，路由称为“生命式路由”
-  HashRouter as Router, // route的容器
+  BrowserRouter as Router, // route的容器
   Route, // 一条路由
   Link
 } from 'react-router-dom';
@@ -26,9 +26,7 @@ class App extends Component {
             <nav className="navbar navbar-inverse">
               <div className="container-fluid">
                 <div className="narbar-header">
-                  <div className="navbar-brand">
-                    用户管理
-              </div>
+                  <div className="navbar-brand">React用户管理系统</div>
                 </div>
                 <ul className="nav navbar-nav">
                   <li><Link to="/home">首页</Link></li>
