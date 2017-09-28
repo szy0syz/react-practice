@@ -47,3 +47,15 @@ class UserAdd extends Component {
 
 ## zf_CH05 Switch组件
 
+- `react-router-dom`中的`Switch`，表示只对其内部Route实体进行一次匹配，不像正则那么贪婪。
+- `exact`也是对Route实体进行精确匹配
+
+```js
+<Switch>
+  <Route path="/" exact render={props => <div style={{ background: 'red' }}>首页</div>}></Route>
+  <Route path="/:pathname" render={props => props.match.params.pathname}></Route>
+  <Route path="/home" component={Home}></Route>
+  <Route path="/user" component={User}></Route>
+  <Route path="/profile" component={Profile}></Route>
+</Switch>
+```
