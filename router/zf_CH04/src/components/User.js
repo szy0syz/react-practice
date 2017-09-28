@@ -7,6 +7,7 @@ import {
 
 import UserList from './UserList';
 import UserAdd from './UserAdd';
+import UserDetail from './UserDetail';
 
 export default class User extends Component {
   render() {
@@ -22,6 +23,7 @@ export default class User extends Component {
           {/* 嵌套路由开始了，这个是嵌套的内容切换显示的地~~~ */}
           <Route path="/user/list" component={UserList}/>
           <Route path="/user/add" component={UserAdd} />
+          <Route path="/user/detail/:id" component={UserDetail} />
         </div>
       </div>
     )

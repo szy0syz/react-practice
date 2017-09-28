@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   // v4版本后，路由称为“生命式路由”
-  HashRouter as Router, // route的容器
+  BrowserRouter as Router, // route的容器
   Route, // 一条路由
   Link
 } from 'react-router-dom';
