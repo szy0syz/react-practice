@@ -25,3 +25,25 @@
 
 ### 效果图
 ![CH03](http://ofx24fene.bkt.clouddn.com//img/react/zf_router03.gif)
+
+## zf_CH04 实现用户管理
+
+- ref: `reference` 引用
+  - 先在某个虚拟元素上 特性上加入ref，ref内部是一个回调函数，函数第一个参数就是当这个虚拟元素mount挂载到页面并生成的那个dom元素，对，就是dom元素！
+  - 只是栗子中的`this.name`取得好土。
+
+```js
+class UserAdd extends Component {
+  handler = () => {
+    let name = this.name.value;
+  }
+  render(){
+    return(
+      <input type="text" ref={ref => this.name = ref} />
+    );
+  };
+}
+```
+
+## zf_CH05 Switch组件
+
