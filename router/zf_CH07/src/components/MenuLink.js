@@ -8,11 +8,11 @@ import { Route, Link } from 'react-router-dom';
 
 // export default function (props) {
 // li的className就可以放判断的表达式
-export default function ({ to, label }) {
+export default function ({ to, label, activeOnlyWhenExact }) {
   // <Route path={to} children={(props) => {
   // 这里结构props里的match了，匹配到路由match有值，没有匹配就没值 
   return (
-    <Route path={to} children={({ match }) => {
+    <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => {
       return <li className={match ? 'active' : ''}><Link to={to}>{label}</Link></li>
     }} />
   );
