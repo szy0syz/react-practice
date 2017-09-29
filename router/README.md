@@ -112,4 +112,14 @@ export default function ({ component: Component, ...rest }) {
   - 在`<Route />`里用render属性定义箭头函数，判断flag，如果登录就返回传入的`<Component />`给render函数去渲染
   - 如果没有登录就返回`<Redirect />`给render渲染，在其里to属性自定义对象，这个对象会传给子附件的`props.location`属性上
 
+### React-Router另一种渲染组件的方式 
+
+- 在组件上直接挂Render属性，通过箭头函数`(props)=><div></div>`直接渲染。Link上就不需要挂component了。
+
+```jsx
+<Switch>
+  <Route path="/:name" render={({match})=>(<div>{match.params.name}</div>)}/>
+</Switch>
+```
+
 > 从现在来看，真感觉React真的比Vue强！
