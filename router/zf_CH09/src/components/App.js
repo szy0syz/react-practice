@@ -14,6 +14,7 @@ import User from './User';
 import MenuLink from './MenuLink';
 import Login from './Login';
 import Profile from './Profile';
+import NotFound from './NotFound';
 import ProtectedRoute from './ProtectedRoute'
 
 class App extends Component {
@@ -49,6 +50,7 @@ class App extends Component {
                     <Route path="/user" component={User}></Route>
                     <Route path="/login" component={Login}></Route>
                     <ProtectedRoute path="/profile" component={Profile}></ProtectedRoute>
+                    <Route component={NotFound}></Route>
                   </Switch>
                 </div>
               </div>
