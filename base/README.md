@@ -62,6 +62,7 @@ let el3Obj = {
 ```
 
 - 关于手写实现React.Render()原理V1版：
+  - children属性只能接受字符串，哈哈，好土
 
 ```js
 let el3Obj = {
@@ -87,4 +88,31 @@ function render({props, type} , container) {
 }
 
 render(el3Obj, document.querySelector('#root'));
+```
+
+- 实现React.Render()原理V2版：
+  - 就是在children里多了个递归调用函数自身
+
+```js
+
+function render({ props, type }, container) {
+  let ele = document.createElement(type);
+  for (let attr in props) {
+    if (attr === 'children') {
+      props[attr].forEach((item) => {
+        if (typeof item === 'string') {
+          let textNode = document.createTextNode(item);
+          ele.appendChild(textNode);
+        } else {
+          render(item, ele);
+        }
+      });
+    } else if (attr === 'className') {
+      ele.setAttribute('class', props[attr]);
+    } else {
+      ele.setAttribute(attr, props[attr]);
+    }
+  }
+  container.appendChild(ele);
+}
 ```

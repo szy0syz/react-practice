@@ -13,18 +13,22 @@
 
 let el3Obj = {
   type: 'div',
-  props: { className: 'red', id: 'myDiv1', children: ['hello'] }
+  props: { className: 'red', id: 'myDiv1', children: ['hello', { type: 'span', props: { className: 'blue', id: 'mySpan', children: ['World'] } }] }
 };
 
-function render({props, type} , container) {
+function render({ props, type }, container) {
   let ele = document.createElement(type);
-  for(let attr in props) {
-    if(attr === 'children') {
-      props[attr].forEach((item)=> {
-        let textNode = document.createTextNode(item);
-        ele.appendChild(textNode);
+  for (let attr in props) {
+    if (attr === 'children') {
+      props[attr].forEach((item) => {
+        if (typeof item === 'string') {
+          let textNode = document.createTextNode(item);
+          ele.appendChild(textNode);
+        } else {
+          render(item, ele);
+        }
       });
-    } else if(attr === 'className') {
+    } else if (attr === 'className') {
       ele.setAttribute('class', props[attr]);
     } else {
       ele.setAttribute(attr, props[attr]);
