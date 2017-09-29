@@ -102,5 +102,14 @@ export default function ({ component: Component, ...rest }) {
 
 ### 小节流程
 
-1. 1
-2. 2
+1. App.js中定义普通路由`/login`和受保护路由`/profile`
+2. Login.js不需要状态就用函数式定义
+  - 逻辑1：设置已登录flag
+  - 逻辑2：从props.location.state.from获取前一个页面地址，然后push到history的stack里，页面就跳转了
+3. ProtectedRoute.js 自定义受保护的路由
+  - ES6新语法
+  - 返回`<Route />`组件
+  - 在`<Route />`里用render属性定义箭头函数，判断flag，如果登录就返回传入的`<Component />`给render函数去渲染
+  - 如果没有登录就返回`<Redirect />`给render渲染，在其里to属性自定义对象，这个对象会传给子附件的`props.location`属性上
+
+> 从现在来看，真感觉React真的比Vue强！
