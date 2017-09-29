@@ -10,7 +10,7 @@ import { Redirect, Route } from 'react-router-dom';
 // 注意1：这里是结构的格式 前面那个component是结构出来的外来形参，Component是函数作用域内的实参
 // 注意2：从路由中导出的Redirect的to属性会封装接收的对象转移到子组件的props.lcocation上
 export default function ({ component: Component, ...rest }) {
-  return <Route {...rest} render={(props)=>
+  return <Route {...rest} render={(props) =>
     localStorage.getItem('login') === 'true' ? <Component /> : <Redirect to={{ pathname: '/login', state: { from: props.location.pathname } }} />
   } />
 }
