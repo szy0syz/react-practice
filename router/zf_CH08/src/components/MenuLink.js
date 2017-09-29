@@ -4,7 +4,7 @@ import { Route, Link } from 'react-router-dom';
 // 新的渲染方法：children
 // component 对应一个组件 当URL路径跟当前Route path匹配时渲染
 // render 对应一个匿名的组件函数 当URL路径跟当前Route path匹配时渲染
-// children 
+// children 不管路由是否匹配当前URL都会进行渲染
 
 // export default function (props) {
 // li的className就可以放判断的表达式

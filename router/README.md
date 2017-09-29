@@ -70,6 +70,9 @@ class UserAdd extends Component {
 - `rest`是 [剩余参数运算符]: `export default function ({component: Component, ...rest}){}`
 - 注意1：这里是结构的格式 前面那个component是结构出来的外来形参，Component是函数作用域内的实参
 - 注意2：从路由中导出的Redirect的to属性会封装接收的对象转移到子组件的props.lcocation上
+- `component`属性 对应一个组件 当URL路径跟当前Route path匹配时渲染
+- `render`属性 对应一个匿名的组件函数 当URL路径跟当前Route path匹配时渲染
+- `children`属性 对应一个匿名的组件 不管路由是否匹配当前URL都会进行渲染
 
 ```js
 ////------App.js ↓↓↓↓↓↓↓↓↓
@@ -128,4 +131,27 @@ export default function ({ component: Component, ...rest }) {
 
 - http://www.zhufengpeixun.cn/docs/html/react课程/3.react路由.html
 
+```js
+export default function ({ to, label, activeOnlyWhenExact }) {
+  // 这里结构props里的match了，匹配到路由match有值，没有匹配就没值 
+  return (
+    <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => {
+      return <li className={match ? 'active' : ''}><Link to={to}>{label}</Link></li>
+    }} />
+  );
+}
+```
+
 ## zf_CH08 路由跳转提示
+
+- 实现流程
+  1. 在有Input的组件构造函数上添加`state.blocking=false`属性，当值为true时表示需要提示用户
+  2. 将原组件返回并级加返回一个从Router里导出来的Prompt组件，该组件when属性就是``state.blocking`，而message就是提示string即可
+  3. 设置影响事件onBlur和onChange修改`state.blocking=true`
+  4. 设置提交按钮是个例外，setState用异步方式push路由
+
+## zf_CH09 404组件
+
+- 实现流程
+  1. 使用函数方式创建组件，因为这组件不需要状态嘛
+  2. 主路由Swich最后写默认路由，不写path属性，它就可以匹配所有路由了
