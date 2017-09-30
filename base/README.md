@@ -180,7 +180,7 @@ render(<Message msg="jerry" id="44" sytle={{color: 'red'}} hobby={['eat', 'sleep
 
 ## CH05 React组件的状态
 
- ### 组件的两种定义方式及区别
+### 组件的两种定义方式及区别
 
 - 类方式声明组件
   - 通过类来声明的组件比函数声明的组件多了一个 `状态`
@@ -212,4 +212,31 @@ class Clock extends Component {
     );
   };
 }
+```
+
+## CH06 React组件的属性
+
+- React组件的状态是该组件自己本身的，父组件无法直接修改；
+- React组件的属性是父组件传递进来的，并不是组件本身的；
+- 打比喻：组件的属性好比儿子输出时父亲给取的名字，而组件的状态好比儿子心情。
+
+### 组件的默认属性
+
+当父组件没传递时，React会自动取默认属性到props上。
+
+```js
+static defaultProps = {
+    name: '无名氏'
+};
+```
+
+### 组件的属性类型
+
+当父组件传递属性时，会进行过滤限制。
+
+```js
+static propTypes = {
+    name: PropType.string.isRequired,
+    age: PropType.number
+};
 ```
