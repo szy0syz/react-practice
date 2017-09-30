@@ -145,3 +145,35 @@ let el = React.createElement('div', null, [React.createElement('span', {key: '1'
   }
 }
 ```
+
+- React是由 React元素 和 React组件 构成
+  1. 首字母要小写，凡是首字母小写的购汇被认为是React元素
+  2. 在React里用DOM原生标签声明元素时，只能写DOM里原生的属性，如果出现不识别的，React渲染时会把不识别的属性从元素上移除
+
+- React组件
+  - 组件的出现可以很直观的将一个复杂的页面分割成若干独立组件，每个组件包含自己的逻辑和样式，再讲这些独立组件组合成一个复杂的页面。这样既减少了逻辑复杂度，又实现了代码的重用
+  - 可组合：一个组件可以和其它的组件一起使用或者直接嵌套在另一个组件内部
+  - 可重用：每个组件都是具有独立功能的，它可以被使用在多个场景中
+  - 可维护：每个小组件仅仅包含自身的逻辑，更容易被理解和维护
+
+### 组件的两种定义方式及区别
+
+- 函数式定义组件
+  - 当Message组件被调用时，调用者(父组件会)封装赋值props参数对象给子组件传递进去
+  - 当render时，Message组件里的props会收到这样一个对象: `{ msg: 'jerry', id: '44' }`
+  - 组件名首字母必须是大写的
+  - 如果组件名首字母是小写的，就会被React引擎识别为 React元素，根本没法渲染
+  - React核心知识点：组件、元素、属性、状态
+  - 组件定义完后可以像React元素一样使用
+
+```js
+import React from 'react'
+import ReactDOM,{render} from 'react-dom';
+let Message = ({props}) => <h1 sytle={props.stlye}>{props.msg}</h1>;
+render(<Message msg="jerry" id="44" sytle={{color: 'red'}} hobby={['eat', 'sleep']} />, document.querySelector('#root'));
+```
+
+- 组件的渲染过程
+  1. 将组件上的属性 封装成`props`对象(键/值对)
+  2. 调用组件函数，得到返回的 React元素
+  3. ReactDOM把React元素转成真实的DOM元素并且插入到目标容器内部
