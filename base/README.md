@@ -122,3 +122,26 @@ function render({ props, type }, container) {
 
 - 在JSX的`{}`里放的是JS表达式，表达式是由变量的运行符组合而成
 - 条件渲染时，可以返回`null`，表示什么都不进行渲染
+
+![jsx-flow](http://ofx24fene.bkt.clouddn.com//2017/react/react-jsx-flow.png)
+
+## CH04 React组件
+
+1. React是一个用户界面的库
+2. React元素 JSX元素 其实就是一个用JS来描述界面的对象
+
+```js
+let el = React.createElement('div', null, [React.createElement('span', {key: '1'}, ['hello'])];
+// el经过React构造后会呈现如下结构:
+{
+  type: "div",
+  props: {
+    children: [
+      {
+        type: 'span',
+        props: { children: [ 'hello' ] }
+      }
+    ]
+  }
+}
+```
