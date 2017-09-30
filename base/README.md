@@ -177,3 +177,39 @@ render(<Message msg="jerry" id="44" sytle={{color: 'red'}} hobby={['eat', 'sleep
   1. 将组件上的属性 封装成`props`对象(键/值对)
   2. 调用组件函数，得到返回的 React元素
   3. ReactDOM把React元素转成真实的DOM元素并且插入到目标容器内部
+
+## CH05 React组件的状态
+
+ ### 组件的两种定义方式及区别
+
+- 类方式声明组件
+  - 通过类来声明的组件比函数声明的组件多了一个 `状态`
+  - 状态可以用来存放组件内部一些变化的值。状态只能有内部初始化、由内部改变 
+  - 类里的render方法指的是该组件将要如何渲染，一定要返回一个React元素，必须仅返回一个React元素
+
+```js
+// Demo: 通过类声明组件的小时钟
+class Clock extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      time: new Date().toLocaleString()
+    };
+  }
+  componentDidMount() {
+    window.setInterval(() => {
+      this.setState({
+        time: new Date().toLocaleString()
+      });
+    }, 1000);
+  }
+  render() {
+    return (
+      <div>
+        <span>Datetime:  </span>
+        <span>{this.state.time}</span>
+      </div>
+    );
+  };
+}
+```
