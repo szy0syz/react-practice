@@ -4,6 +4,8 @@
 
 ## CH01：认识React
 
+- http://www.zhufengpeixun.cn/docs/html/react%E8%AF%BE%E7%A8%8B/2.React%E5%9F%BA%E7%A1%80.html
+
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -116,3 +118,7 @@ function render({ props, type }, container) {
   container.appendChild(ele);
 }
 ```
+## CH03 JSX
+
+- 在JSX的`{}`里放的是JS表达式，表达式是由变量的运行符组合而成
+- 条件渲染时，可以返回`null`，表示什么都不进行渲染
