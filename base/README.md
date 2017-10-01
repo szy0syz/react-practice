@@ -255,4 +255,32 @@ static propTypes = {
 ```js
 <input onChange={this.handleChange} type="text" value={this.state.val} />
 ```
-而当我们设置了onChange来处理绑定后，就会实现了input.value和state.val之间的`双向绑定`
+而当我们设置了onChange来处理绑定后，就会实现了input.value和state.val之间的`双向绑定`。
+
+## CH8 非受控组件DOM操作
+
+- 在React的开发中，绝大数常规情况的`this`默认都是(应)指向当前组件的实例！
+- 在ref放箭头函数时，表示当前**虚拟元素被挂载到页面中之后**会立即调用此函数，并传入渲染后的DOM元素。
+
+```js
+class Sum extends Component {
+
+  handleChange = (e) => {
+    let a = parseInt(this.a.value || 0, 0);
+    let b = parseInt(this.refs.b.value || 0, 0);
+    this.refs.c.value = a + b
+  };
+
+  render() {
+    return (
+      <div onChange={this.handleChange}>
+        <input ref={ref => this.a = ref} type="text" />
+        +
+        <input ref="b" type="text" />
+        =
+        <input ref="c" type="text" />
+      </div>
+    );
+  }
+}
+```
