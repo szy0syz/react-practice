@@ -286,3 +286,32 @@ class Sum extends Component {
   }
 }
 ```
+
+## CH9 复合组件
+
+- 父组件在组件属性上值，传递给子组件，子组件再通过`props`传递给孙组件，孙组件用`props`接收。
+- 父传子，子传孙
+- 父传state给子，子接收state用props，父state变，子props也变，单项改变
+
+```js
+export default class Panel extends Component {
+  constructor() {
+    super();
+    this.state = {
+      color: 'black'
+    };
+  }
+
+  render() {
+    return (
+      <div className="panel panel-default">
+        <input className="btn btn-primary" onClick={() => this.setState({ color: 'blue' })} type="button" value="变蓝"></input>
+        <input className="btn btn-warning" onClick={() => this.setState({ color: 'orange' })} type="button" value="变橙"></input>
+        <PanelHeader color={this.state.color} header={this.props.header}></PanelHeader>
+        <PanelBody body={this.props.body}></PanelBody>
+        <PanelFooter footer={this.props.footer}></PanelFooter>
+      </div>
+    );
+  };
+}
+```
