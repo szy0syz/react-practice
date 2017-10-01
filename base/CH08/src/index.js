@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 class Sum extends Component {
 
   handleChange = (e) => {
-    let a = parseInt(this.a.value || 0, 0);
+    let a = parseInt(this.a.value ||  0, 0);
     let b = parseInt(this.refs.b.value || 0, 0);
     this.refs.c.value = a + b
   };
@@ -23,25 +23,3 @@ class Sum extends Component {
 }
 
 ReactDOM.render(<Sum></Sum>, document.getElementById('root'));
-
-// class JerryInput extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       val: 'jerry'
-//     };
-//   }
-
-//   handleChange = (e) => {
-//     this.setState({val: e.target.value});
-//   }
-
-//   render() {
-//     return (
-//       <div>
-//         <p>{this.state.val}</p>
-//         <input onChange={this.handleChange} type="text" value={this.state.val} />
-//       </div>
-//     );
-//   }
-// }
