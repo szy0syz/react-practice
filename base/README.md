@@ -240,3 +240,19 @@ static propTypes = {
     age: PropType.number
 };
 ```
+
+## CH07 受控组件DOM操作
+
+### 受控组件
+
+> 收组状态控制的组件称为受控组件。反之亦然。
+
+```js
+<input type="text" value={this.state.val} />
+```
+当我们仅给`input`元素的value设置组件状态，而不设置诸如onChange的handle时，组件被React当做`只读元素 read-only`
+
+```js
+<input onChange={this.handleChange} type="text" value={this.state.val} />
+```
+而当我们设置了onChange来处理绑定后，就会实现了input.value和state.val之间的`双向绑定`
