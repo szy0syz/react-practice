@@ -315,3 +315,21 @@ export default class Panel extends Component {
   };
 }
 ```
+
+## CH10 组件的生命周期函数
+
+### 装载组件时触发
+
+- componentWillMount
+- componentDidMount
+
+### 更新组件时触发
+
+- componentWillReceiveProps
+- shouldComponentUpdate
+- componentWillUpdate
+- componentDidUpdate
+
+### 卸载组件时触发
+
+- componentWillUnmount
