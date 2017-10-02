@@ -348,3 +348,9 @@ export default class Panel extends Component {
 - componentWillUnmount
 
 > CH10——Demo：点+，每个五次父组件就显示当前计数器，而子组件要等当前计数器被3和5整除再显示一次。
+
+## CH11 百度搜索框
+
+- 实现流程：
+  - 给input绑定值改变时间，当值发生改变时调用对应的监听函数
+  - 获取到input框中的值，然后调用百度的接口获取数据并修改状态对象中的`words`属性

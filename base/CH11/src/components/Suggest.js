@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 
-export default class Panel extends Component {
+export default class Suggest extends Component {
 
   constructor(){
     super();
     this.state = {
-      words: []
+      words: ['a', 'b', 'c']
     }
+  }
+
+  handleChange = (e) => {
+    // 要不要考虑下IE
+    let wd = e.target.value;
+    console.log(wd);
   }
 
   render() {
@@ -16,12 +22,12 @@ export default class Panel extends Component {
           <div className="col-sm-8 col-sm-offset-2">
             <div className="panel panel-default">
               <div className="panel-heading">
-                <input type="text" className="form-control"/>
+                <input type="text" onChange={this.handleChange} className="form-control"/>
               </div>
               <div className="panel-body">
                 <ul className="list-group">
                   {
-                    this.words.map((word, index) => {
+                    this.state.words.map((word, index) => {
                       return <li key={index} className="list-group-item">{word}</li>
                     })
                   }
