@@ -9,7 +9,6 @@ class SubCounter extends Component {
   }
 
   shouldComponentUpdate(newProps, newState) {
-    //console.log('*SubCounter shouldComponentUpdate');
     return newProps.num % 3 === 0;
   }
 

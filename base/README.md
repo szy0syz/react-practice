@@ -318,6 +318,19 @@ export default class Panel extends Component {
 
 ## CH10 组件的生命周期函数
 
+### 组件生命周期
+
+一个组件类大多由 `extends Component` 创建。
+
+1. getInitialState
+初始化 `this.state` 的值，只在组件状态前调用一次。如果是ES6语法，也可以在构造函数中初始化状态: `constructor(props)`
+
+2. getDefaultProps
+只在组件创建时调用一次并缓存返回的对象(即在 `React.createClass` 之后就会调用)。
+
+3. render
+组装生成这个组件的HTML结构(使用原生HTML标签或者子组件)，也可以返回null或者false，这时候 ReactDOM.findDOMNode(this)会返回null。
+
 ### 装载组件时触发
 
 - componentWillMount
@@ -333,3 +346,5 @@ export default class Panel extends Component {
 ### 卸载组件时触发
 
 - componentWillUnmount
+
+> CH10——Demo：点+，每个五次父组件就显示当前计数器，而子组件要等当前计数器被3和5整除再显示一次。
