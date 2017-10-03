@@ -11,7 +11,7 @@ const createStore = (reducer) => {
     // 两个参数分别是：原state状态和传进来的指令。相当于用传来的执行action修改原state后返回新state
     // reducer最后返回新的state
     state = reducer(state, action);
-    //循环所有监听者们执行一次
+    // 依次循环所有监听者们执行一次
     listeners.forEach(listener => listener())
   };
   // 订阅仓库内的状态事件，当状态发生变化后会调用对应的监听函数
