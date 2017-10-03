@@ -1,3 +1,4 @@
 .DS_Store
 router/.DS_Store
 redux/.DS_Store
+node_modules/
