@@ -354,3 +354,6 @@ export default class Panel extends Component {
 - 实现流程：
   - 给input绑定值改变时间，当值发生改变时调用对应的监听函数
   - 获取到input框中的值，然后调用百度的接口获取数据并修改状态对象中的`words`属性
+  - 监听input的onKeyDown事件，分别对向上键、向下键和回车键做处理
+  - 做好边界判断
+  - 在向下和向下过程中时时修改input的value，input不能变受控组件
