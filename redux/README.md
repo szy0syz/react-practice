@@ -2,7 +2,7 @@
 
 ## CH01: redux应用场景和工作原理
 
-![redux1](http://ofx24fene.bkt.clouddn.com//img/react/react-redux-scene.png)
+![redux1](http://ofx24fene.bkt.clouddn.com//img/react/react-redux-scene1.png)
 
 
 ## CH02: 2. redux & jquery应用
@@ -61,4 +61,8 @@ const createStore = (reducer) => {
 export { createStore }
 ```
 
+### 动态演示
 
+![redux](http://ofx24fene.bkt.clouddn.com//img/react/redux.gif)
+
+> 哇哈哈，我竟然模拟了redux的实现！
