@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import MessageList from './MessageList'
-import MessageForm from './MessageForm'
+import MessageList from './MessageList';
+import MessageForm from './MessageForm';
+import './MessageBox.css';
 class MessageBox extends Component {
   state = {
     messages: [
@@ -17,6 +18,12 @@ class MessageBox extends Component {
     this.setState({ messages });
   };
 
+  removeMessage = (index) => {
+    console.log(index);
+    this.state.messages.splice(index, 1);
+    this.setState({ messages: [...this.state.messages] })
+  };
+
   render() {
     return (
       <div className="container">
@@ -27,7 +34,7 @@ class MessageBox extends Component {
                 <h2 className="text-center">欢迎来到宇宙级留言板</h2>
               </div>
               <div className="panel-body">
-                <MessageList messages={this.state.messages}></MessageList>
+                <MessageList removeMessage={this.removeMessage} messages={this.state.messages}></MessageList>
               </div>
               <div className="panel-footer">
                 <MessageForm addMessage={this.addMessage}></MessageForm>

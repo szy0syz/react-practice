@@ -5,7 +5,7 @@ class MessageForm extends Component {
     e.preventDefault();
     let username = this.username.value;
     let content = this.content.value;
-    this.props.addMessage({username, content, createAt: new Date()});
+    this.props.addMessage({ username, content, createAt: new Date() });
     this.username.value = '';
     this.content.value = '';
   }
