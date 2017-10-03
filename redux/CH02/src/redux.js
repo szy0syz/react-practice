@@ -17,7 +17,7 @@ const createStore = (reducer) => {
   // 订阅仓库内的状态事件，当状态发生变化后会调用对应的监听函数
   // 订阅方法执行后会返回一个取消订阅的函数，调用它可以取消订阅
   let subscribe = (listener) => {
-    listener.push(listener);
+    listeners.push(listener);
     return () => {
       // 在现有监听者们中过滤掉传进来的这个监听者
       listeners = listeners.filter(l=>listener !== l);
