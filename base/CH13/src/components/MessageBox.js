@@ -5,10 +5,10 @@ import './MessageBox.css';
 class MessageBox extends Component {
   state = {
     messages: [
-      { username: '阿大', content: '今年大夏天', createAt: new Date() },
-      { username: '阿二', content: '明年要期末考了，怎么办', createAt: new Date() },
+      { username: '阿大', content: '今天太阳好大哦', createAt: new Date() },
+      { username: '阿二', content: '明年要期末考了，怎么办？', createAt: new Date() },
       { username: '阿三', content: '我要去印度当个阿三', createAt: new Date() },
-      { username: '阿四', content: '走走走，看电影', createAt: new Date() },
+      { username: '阿四', content: '走走走，煎饼果子来一套，😋', createAt: new Date() },
     ]
   };
 

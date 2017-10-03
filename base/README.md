@@ -383,3 +383,4 @@ export default class Panel extends Component {
 ## CH13 留言板(下)
 
 - 状态提升
+  - 当某个状态被多个组件依赖或者影响的时候，就把该状态提升到这些组件的最近公共父组件中去管理，用 `props` 传递数据或者函数来管理这种依赖或着影响的行为。
