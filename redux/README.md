@@ -2,8 +2,11 @@
 
 ## CH01: redux应用场景和工作原理
 
+- 我的绘画作品
 ![redux1](http://ofx24fene.bkt.clouddn.com//img/react/react-redux-scene1.png)
 
+- 别人的绘画作品
+![redux-flow](http://ofx24fene.bkt.clouddn.com//img/react/redux-flow.png)
 
 ## CH02: 2. redux & jquery应用
 
