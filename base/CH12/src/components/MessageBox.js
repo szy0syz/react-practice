@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import MessageList from './MessageList'
+import MessageForm from './MessageForm'
 class MessageBox extends Component {
   state = {
     messages: [

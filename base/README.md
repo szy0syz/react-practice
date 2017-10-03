@@ -379,3 +379,7 @@ export default class Panel extends Component {
 3. 定义 列 `"col-sm-8 col-sm-offset-2"`，bootstrap里你定义了容器后，它会默认给你两边留白中间显示内容，它的格栅grid固定为12列，当我们定义当前列为`col-sm-8`时，右边还空着4个格栅，所以我们在后面补`col-sm-offset-2`这句，意思就是将列向右2列，这样正好在中间显示了
 4. 定义个panel 样式default
 5. 分别来`panel-heading`、`panel-body`、`panel-footer`三个部分
+
+## CH13 留言板(下)
+
+- 状态提升
