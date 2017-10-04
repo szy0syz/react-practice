@@ -179,6 +179,16 @@ class Counter extends Component {
 ReactRom.render(<Counter />, document.querySelector('#root'));
 ```
 
+- React中组件化常规调用Redux的流程(初版，CH05中还有升级版)
+  - 定义action常量名；
+  - 定义reducer
+  - 创建store
+  - 新建子组件
+  - 在子组件的constructor中，首先定义store中state的值赋给子组件自身state
+  - 在子组件componentWillMount()生命周期函数中对应store.subscribe()订阅，内容就是`this.setState({number: store.getState().number});`
+  - 在子组件componentWillUnmount中定义`this.unsubscribe()`
+  - 在render()中，使用store发射action即可
+
 -------
 
 ## CH04: redux概念回顾
