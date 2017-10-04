@@ -83,7 +83,7 @@ export { createStore }
 
 ## CH03: redux & react应用
 
-- 第一版
+- 第一版: 使用老法子调用redux
 
 ```js
 import React, { Component } from 'react';
@@ -127,6 +127,58 @@ render();
 store.subscribe(render);
 ```
 
+- 第二版：使用新方法调用Redux
+
+```js
+import React, { Component } from 'react';
+import ReactRom from 'react-dom';
+import { createStore } from './redux';
+
+const INCREASE = 'INCREASE';
+const DECREASE = 'DECREASE';
+
+//  {type: 'INCREASE'} / {type: 'DECREASE'}
+let reducer = (state = { number: 0 }, action) => {
+  if (action === undefined) { return state; }
+  switch (action.type) {
+    case INCREASE:
+      return { number: state.number + action.amount }
+    case DECREASE:
+      return { number: state.number - action.amount }
+    default:
+      return { number: state }
+  }
+}
+// store = {getState, subscribe, dispatch}
+let store = createStore(reducer);
+class Counter extends Component {
+  constructor() {
+    super();
+    this.state = { number: store.getState().number };
+
+  }
+  componentWillMount(){
+    this.unsubscribe = store.subscribe(() => {
+      this.setState({number: store.getState().number});
+    });
+  }
+  componentWillUnmount(){
+    this.unsubscribe();
+  }
+  render() {
+    return (
+      <div>
+        <p>{this.state.number}</p>
+        <button onClick={() => store.dispatch({ type: INCREASE, amount: 3 })}>+</button>
+        <button onClick={() => store.dispatch({ type: DECREASE, amount: 2 })}>+</button>
+      </div>
+    );
+  }
+}
+
+ReactRom.render(<Counter />, document.querySelector('#root'));
+```
+
 -------
 
 ## CH04: redux概念回顾
@@ -138,3 +190,9 @@ store.subscribe(render);
 - 原则三：使用存函数来执行修改，为了描述 `action` 如何改变 `state tree` ，你需要编写 `reducers`。
 
 > 单一数据源的设计让 React 的组件之间的通信更加方便，同时也便于状态的统一管理。
+
+-------
+
+## CH05: redux版todos
+
+13:27 初始化todo.js组件
