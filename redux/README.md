@@ -69,3 +69,7 @@ export { createStore }
 ![redux](http://ofx24fene.bkt.clouddn.com//img/react/redux.gif)
 
 > 哇哈哈，我竟然模拟了redux的实现！
+
+### 手绘复习redux调用流程
+
+![redux-flow-hand](http://ofx24fene.bkt.clouddn.com//img/react/redux-flow-hand.jpeg)
