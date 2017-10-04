@@ -31,9 +31,13 @@ let render = () => {
   document.querySelector('#counter').innerHTML = store.getState().number;
 }
 // 当仓库里的state发生变化时，会重新执行render，读取最新的状态并更新视图
-store.subscribe(render);
+let unsubscribe =  store.subscribe(render);
 
-$('#increaseBtn').click(()=> store.dispatch({type: INCREASE, amount: 3}));
-$('#decreaseBtn').click(()=> store.dispatch({type: DECREASE, amount: 2}));
+// 定义action
+const actionINCREASE = {type: INCREASE, amount: 3};
+const actionDECREASE = {type: DECREASE, amount: 2};
+
+$('#increaseBtn').click(()=> store.dispatch(actionINCREASE));
+$('#decreaseBtn').click(()=> store.dispatch(actionDECREASE));
 
 render();
