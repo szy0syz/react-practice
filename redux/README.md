@@ -3,9 +3,12 @@
 ## CH01: redux应用场景和工作原理
 
 - 我的绘画作品
+
 ![redux1](http://ofx24fene.bkt.clouddn.com//img/react/react-redux-scene1.png)
 
-- 别人的绘画作品
+- Redux设计思想
+  - Redux是将整个应用状态存储到到一个地方，称为`store`,，里面保存一棵状态树(`state tree`)。 组件可以派发(`dispatch`)行为(`action`)给`store`,而不是直接通知其它组件。 组件内部通过订阅`store`中的状态(`state`)来刷新自己的视图。
+
 ![redux-flow](http://ofx24fene.bkt.clouddn.com//img/react/redux-flow.png)
 
 -------
@@ -122,6 +125,16 @@ let render = () => {
 }
 render();
 store.subscribe(render);
-
-
 ```
+
+-------
+
+## CH04: redux概念回顾
+
+### Redux的大三原则
+
+- 原则一：整个应用的 `state` 被存储在一棵 `object tree` 中，便给这个 `object tree` 只存储在唯一一个 `state`中；
+- 原则二：`state` 是只读的，唯一改变 `state` 的方法就是触发 `action`， `action` 是一个用于描述已发生事件的普通对象。`action`经过reducer后会覆盖返回新的`state`覆盖老的`state`；
+- 原则三：使用存函数来执行修改，为了描述 `action` 如何改变 `state tree` ，你需要编写 `reducers`。
+
+> 单一数据源的设计让 React 的组件之间的通信更加方便，同时也便于状态的统一管理。
