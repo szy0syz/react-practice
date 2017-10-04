@@ -1,6 +1,6 @@
 # react-practice
 
-## 👉[React基础学习笔记及代码](/router/README.md)👈
+## 👉[React基础学习笔记及代码](/base/README.md)👈
 
 ## 👉[React-Router-v4学习笔记及代码](/router/README.md)👈
 
