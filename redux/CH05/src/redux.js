@@ -8,6 +8,7 @@ const createStore = (reducer) => {
   let getState = () => state;
   // 向仓库发送action
   let dispatch = (action) => {
+    if (!action) return;
     // 两个参数分别是：原state状态和传进来的指令。相当于用传来的执行action修改原state后返回新state
     // reducer最后返回新的state
     state = reducer(state, action);
