@@ -210,3 +210,10 @@ ReactRom.render(<Counter />, document.querySelector('#root'));
 ### 关于React组件中使用Redux的流程
 
 1. 
+
+
+-------
+
+## CH06: redux
+
+> 在箭头函数后，如果默认要默认返回就不要加花括号
