@@ -5,7 +5,7 @@ import { createStore } from '../redux';
 const ADD_TODO = "ADD_TODO";
 const DELETE_TODO = "DELETE_TODO";
 
-
+// 1. 创建reducer管理员
 let reducer = (state = { list: [] }, action) => {
   if (action === undefined) { return state; }
   switch (action.type) {
@@ -20,27 +20,15 @@ let reducer = (state = { list: [] }, action) => {
       return state;
   }
 }
-// let reducer = (state = { list: ['睡觉', '起床', '吃饭'] }, action) => {
-//   if (action === undefined) { return state; }
-//   switch (action.type) {
-//     case ADD_TODO:
-//       return { list: [...state.list, action.text] };
-//     case DELETE_TODO:
-//       let list = state.list;
-//       list.splice(action.index, 1);
-//       // reducer的状态具有不变性，每次都要返回一个新的对象
-//       return { list: [...list] };
-//     default:
-//       return state;
-//   }
-// };
 
+// 2. 创建store
+// createStore中会默认调用一次dispatch()
 let store = createStore(reducer);
 
 export default class Todo extends Component {
-  constructor(props) {
-    super(props);
-    console.log('store.getState', store.getState);
+  constructor() {
+    super();
+    console.log(store.getState());
     this.state = { list: store.getState().list };
   };
 
@@ -83,7 +71,7 @@ export default class Todo extends Component {
         <ul>
           {
             this.state.list.map((todo, index) => (
-              <li data-id={index}>{todo} <button onClick={this.handleDetele}>-</button></li>)
+              <li key={index} data-id={index}>{todo} <button onClick={this.handleDetele}>-</button></li>)
             )
           }
         </ul>

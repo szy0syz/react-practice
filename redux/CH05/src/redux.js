@@ -8,7 +8,8 @@ const createStore = (reducer) => {
   let getState = () => state;
   // 向仓库发送action
   let dispatch = (action) => {
-    if (!action) return;
+    // if (!action) return; // 坑了我2小时！kao!
+    // 分析下为什么加了上面那句话就没法得到默认state？因为我们在redux内部做了一次默认的dispatch，但这次并没有返回state，直到默认一直都不能得state。
     // 两个参数分别是：原state状态和传进来的指令。相当于用传来的执行action修改原state后返回新state
     // reducer最后返回新的state
     state = reducer(state, action);
