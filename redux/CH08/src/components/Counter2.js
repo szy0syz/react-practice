@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-import { createStore } from '../redux';
-import reducer from '../store/reducers/counter';
+import connect from '../store/connect';
 import { INCREASE, DECREASE } from '../store/actionTypes';
-let store = createStore(reducer);
-
-
-
 class Counter2 extends Component {
   render() {
     return (
@@ -18,10 +13,6 @@ class Counter2 extends Component {
   }
 }
 
-
-
-
-
 let mapStateToProps = (state) => ({
   val: state.number
 });
@@ -33,32 +24,6 @@ let mapDispatchToProps = (dispatch) => (
     onDecrease: () => dispatch({ type: DECREASE, amount: 2 })
   }
 );
-
-// mapStateToProps 把store里的状态对象映射成组件属性
-let connect = (mapStateToProps, mapDispatchToProps) => (PrivateComponent) => {
-  class Proxy extends Component {
-    constructor() {
-      super();
-      this.state = mapStateToProps(store.getState());
-      // this.state = {val: store.getState().number};
-    }
-
-    componentWillMount() {
-      this.unsubscribe = store.subscribe(() => {
-        this.setState(mapStateToProps(store.getState()));
-      })
-    }
-  
-    componentWillUnmount() {
-      this.unsubscribe();
-    }
-
-    render() {
-      return <PrivateComponent {...this.state} {...mapDispatchToProps(store.dispatch) } />
-    }
-  }
-  return Proxy;
-}
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter2);
