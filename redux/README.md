@@ -309,6 +309,8 @@ class Message extends Component {
 > If you want your application to be stable, don’t use context. It is an experimental API and it is likely to break in future releases of React.
 > 呵呵~
 
+------
+
 ## CH08: react-redux
 
 > React-Redux 将所有组件分成两大类：UI 组件（presentational component）和容器组件（container component）。 
@@ -337,4 +339,11 @@ const Title =
   - 带有内部状态
   - 使用 Redux 的 API 总之，只要记住一句话就可以了：UI 组件负责 UI 的呈现，容器组件负责管理数据和逻辑。 你可能会问，如果一个组件既有 UI 又有业务逻辑，那怎么办？回答是，将它拆分成下面的结构：外面是一个容器组件，里面包了一个UI 组件。前者负责与外部的通信，将数据传给后者，由后者渲染出视图。 React-Redux 规定，所有的 UI 组件都由用户提供，容器组件则是由 React-Redux 自动生成。也就是说，用户负责视觉层，状态管理则是全部交给它。
 
+- 手写的很重要明天补再心得笔记。
+
+> 在React中，当使用context属性时，在孙组件中的constructor构造函数中是无法获取this.context属性，因为还没初始化啊！
+
+------
+
+## CH09: 使用系统库实现
 
