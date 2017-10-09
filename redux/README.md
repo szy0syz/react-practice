@@ -347,3 +347,7 @@ const Title =
 
 ## CH09: 使用系统库实现
 
+- 使用大神的写好的包来替换自己写的
+  - 替换自己写的`redux`
+  - 结构`react-redux`替换`Provider`
+  - 结构`react-redux`替换`connect`
