@@ -9,7 +9,7 @@ let reducer = (state = { number: 0 }, action) => {
     case DECREASE:
       return { number: state.number - action.amount }
     default:
-      return { number: state }
+      return state;
   }
 }
 

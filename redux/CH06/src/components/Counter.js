@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { store } from '../store/store';
-import {INCREASE, DECREASE} from '../store/actionTypes';
+import { INCREASE, DECREASE } from '../store/actionTypes';
+
+let increase = (amount) => ({ type: INCREASE, amount })
+let decrease = (amount) => ({ type: DECREASE, amount })
 
 export default class Counter extends Component {
   constructor(props) {
@@ -8,20 +11,20 @@ export default class Counter extends Component {
     this.state = { number: store.getState().counter.number };
 
   }
-  componentWillMount(){
+  componentWillMount() {
     this.unsubscribe = store.subscribe(() => {
-      this.setState({number: store.getState().counter.number});
+      this.setState({ number: store.getState().counter.number });
     });
   }
-  componentWillUnmount(){
+  componentWillUnmount() {
     this.unsubscribe();
   }
   render() {
     return (
       <div>
         <p>{this.state.number}</p>
-        <button onClick={() => store.dispatch({ type: INCREASE, amount: 3 })}>+</button>
-        <button onClick={() => store.dispatch({ type: DECREASE, amount: 2 })}>-</button>
+        <button onClick={() => store.dispatch(increase(3))}>+</button>
+        <button onClick={() => store.dispatch(decrease(2))}>-</button>
       </div>
     );
   }
