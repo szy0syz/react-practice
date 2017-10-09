@@ -214,6 +214,51 @@ ReactRom.render(<Counter />, document.querySelector('#root'));
 
 -------
 
-## CH06: redux
+## CH06: combineReducers
 
 > 在箭头函数后，如果默认要默认返回就不要加花括号
+
+在实现combineReducers时用到了“高阶函数”，其定义为：
+  - 函数可以作为参数被传递；
+  - 函数可以作为返回值输出。
+
+我们实现combineReducers原理就是将函数作为结果输出。
+
+#### combineReducers的实现
+
+1. 老表的实质：一个函数，形参接收的是一个由若干reducer组成对象，返回的也是一个标准的reducer函数
+2. 老表的作用：合并若干reducer成一个大的reducer返回
+
+好了，知道了实质，就好写了:
+
+```js
+// 算了，就不写成es6版了，那语法太甜了！
+function combineReducers(reducers) {
+  // 高阶函数：函数返回函数
+  return function(state, action) {
+    let newState = {};
+    for(var key in reducers) {
+      if(reducers.hasOwnProperty(key)) {
+        newState[key] = reducers[key](state[key], action);
+      }
+    }
+  }
+}
+
+// 总之，还是要写个es6版本的
+let combineReducers = (reducers) =>
+  // 在tm记一遍：每个reducer都需要返回默认值，因为有内部初始化渲染dispatch的需要！
+  // counter: { number: 0 }, todo: { list: [] }
+  (state = {}, action) => { // 必须返回一个reducer(es6写法，买买，这种写法好语法糖啊！！！)
+    // if (!action) return state; // 这里不需要，因为在子reducer里会有默认值处理
+    let newState = {};
+    for (var key in reducers) { // todo, counter 两个key
+      // newState[key] = reducers[key]; // 不能这样写，因为reducers[key]取来的是reducer，不是state啊。
+      // reducers[key](state[key], action); 我们不能传整个state进去，我们只能传key对应的老的state传进去
+      newState[key] = reducers[key](state[key], action);
+    }
+    return newState;
+  }
+```
+
+> 关于实现combineReducers的核心：多个reducer合并一个标准格式的reducer，子reducer只更新自己的state。
