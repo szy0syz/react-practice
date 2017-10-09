@@ -17,7 +17,7 @@ let reducer = (state = { list: [] }, action) => {
       // reducer的状态具有不变性，每次都要返回一个新的对象
       return { list: [...list] };
     default:
-      return { list: state }
+      return state;
   }
 }
 // let reducer = (state = { list: ['睡觉', '起床', '吃饭'] }, action) => {
