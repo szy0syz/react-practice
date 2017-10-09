@@ -205,6 +205,8 @@ ReactRom.render(<Counter />, document.querySelector('#root'));
 
 ## CH05: redux版todos
 
-13:27 初始化todo.js组件
+> **注意：Redux要求我们的状态具有不变性，在有进行操作的case时，每次都要返回一个新的对象。说白了就是每次返回的引用都必须与老的不一样。**
 
-> **注意：Redux要求我们的状态具有不变性，每次都要返回一个新的对象。说白了就是每次返回的引用都必须与老的不一样。**
+### 关于React组件中使用Redux的流程
+
+1. 

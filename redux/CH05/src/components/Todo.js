@@ -26,9 +26,8 @@ let reducer = (state = { list: [] }, action) => {
 let store = createStore(reducer);
 
 export default class Todo extends Component {
-  constructor() {
-    super();
-    console.log(store.getState());
+  constructor(props) {
+    super(props);
     this.state = { list: store.getState().list };
   };
 
