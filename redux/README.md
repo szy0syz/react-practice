@@ -262,3 +262,49 @@ let combineReducers = (reducers) =>
 ```
 
 > 关于实现combineReducers的核心：多个reducer合并一个标准格式的reducer，子reducer只更新自己的state。
+
+## CH07: context
+
+### 有用**content**的demo
+
+```js
+class Contatiner extends Component {
+  render() {
+    return (
+      <MessageList color={color} messages={this.props.messages}></MessageList>
+    )
+  }
+}
+
+class MessageList extends Component {
+  render() {
+    return (
+      <ul>
+        {
+          this.props.messages.map((m, i) => (
+            <Message color={this.props.color} key={i} message={m}></Message>
+          ))
+        }
+      </ul>
+    )
+  }
+}
+
+class Message extends Component {
+  render() {
+    return (
+      <li style={{ color: this.props.color }}>{this.props.message}</li>
+    );
+  }
+}
+```
+
+### 使用context后
+
+1. 祖宗组件类定义时使用`getChildContenxt()`函数
+2. 祖宗组件类定义完后再追加`Contatiner.childContextTypes`
+3. 孙组件内先定义`Message.contextTypes`
+4. 孙组件使用`this.context.color`使用属性
+
+> If you want your application to be stable, don’t use context. It is an experimental API and it is likely to break in future releases of React.
+> 呵呵~
