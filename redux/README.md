@@ -354,5 +354,22 @@ const Title =
 
 ### 理清React-Reudx的使用路线
 
-1. 从 `react-redux` 中结构 `{ Provider }`，用`<Provider></Provider>`包裹所有子孙组件，并在`<Provider store={store}>`放好store，以后的子孙组件可以用过context访问到这个store；
-2. 写`store.js`：
+1. ~~从 `react-redux` 中结构 `{ Provider }`，用`<Provider></Provider>`包裹所有子孙组件，并在`<Provider store={store}>`放好store，以后的子孙组件可以用过context访问到这个store；~~
+2. ~~写`store.js`：~~
+
+> 完全写不出来嘛
+
+**重新整理思路，再用系统库实现一此React-Redux：**
+
+1. 从'react-redux'导`Provider`: 其实质就是将包裹组件，并自己属性上的sotre传递下去给所有子子孙孙组件。
+2. 导入sotre
+3. 在store.js中先从`redux`中导入`redux.createStore()`函数
+4. 在导入若干reducer，如果需要就combineReducer
+5. 创建store实例
+6. 实现各种reducer，注意要判断没传action时的情况
+7. 创建函数式组件。因为组件状态组件统一归redux管理，所以可以写成函数式的组件了,毕竟我们只用了属性，没用状态了，所以组件不需要管状态了，全部使用属性就可以，但如果有自己状态也可以
+8. 实现状态映射属性表
+9. 实现事件映射属性表：这里key的值必须是函数，丢事件嘛，不放函数放什么。
+10. 调用`connect(mapState,mapDispatch)(MyComponent)`函数返回新的Proxy包装组件对象
+
+> 因为就是上面这些，第二版来一个手写实现React-Redux版的使用流程

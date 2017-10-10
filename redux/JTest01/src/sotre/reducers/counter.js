@@ -1,3 +1,4 @@
+// 7. 创建reducer
 let reducer = (state = { number: 0 }, action) => {
   if (action) {
     switch (action.type) {
