@@ -351,3 +351,8 @@ const Title =
   - 替换自己写的`redux`
   - 结构`react-redux`替换`Provider`
   - 结构`react-redux`替换`connect`
+
+### 理清React-Reudx的使用路线
+
+1. 从 `react-redux` 中结构 `{ Provider }`，用`<Provider></Provider>`包裹所有子孙组件，并在`<Provider store={store}>`放好store，以后的子孙组件可以用过context访问到这个store；
+2. 写`store.js`：
