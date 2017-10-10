@@ -8,6 +8,12 @@ import { Provider } from 'react-redux';
 import store from './sotre';
 // 03. 导入子组件
 import Index from './pages';
+console.log('1: ',store.getState());
+store.dispatch({ type: "ADD" });
+store.dispatch({ type: "ADD" });
+console.log('2: ',store.getState());
+store.dispatch({ type: "SUB" });
+console.log('3: ',store.getState());
 
 ReactDOM.render(
   <Provider store={store}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import connect from '../store/connect'; // 我们自己写的
 import { connect } from 'react-redux';
 import { INCREASE, DECREASE } from '../store/actionTypes';
-class Counter2 extends Component {
+class Counter3 extends Component {
   render() {
     return (
       <div>
@@ -27,4 +27,4 @@ let mapDispatchToProps = (dispatch) => (
 );
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Counter2);
+export default connect(mapStateToProps, mapDispatchToProps)(Counter3);
