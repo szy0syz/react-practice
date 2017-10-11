@@ -54,3 +54,15 @@ store.dispatch(new Promise((resolve, reject) => {
   }, 3000);
 }));
 ```
+
+-----
+
+## CH05：中间件的链式调用
+
+改造redux实现，让`applyMiddleware`方法支持链式执行中间件。
+如果放入多个中间件的话，需要从左向右一次执行
+
+实现改造：
+
+1. 在创建store时，不再只传一个中间件，而是依次传入多个中间件`let store = applyMiddleware(logger1, logger2)(createStore)(reducer);`
+2. 修改redux源码，applyMiddleware方法不再只接受一个对象，而是将所接受对象全部展开
