@@ -33,3 +33,24 @@ store.dispatch((dispatch) => { setTimeout(() => dispatch({ type: "SUB" }), 3000)
 
 ### CH04：实现redux-promise
 
+实现原理：
+  - 构建promise中间件，格式还是：`store => next => action`
+  - 在嵌套函数最里层判断`isPromise`
+  - 如果是就调用`action.then()`，在then中那promise的resolve返回值data，此时返回值就是真正的action，这时在调用`next(data)`
+  - 如果不是promise就老老实实按套路调用`next(action)`
+
+```js
+let promise = store => next => action => {
+  if (isPromise(action)) {
+    return action.then((data) => next(data));
+  }
+  next(action);
+};
+let isPromise = obj => obj.then;
+////////////////
+store.dispatch(new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve({ type: "ADD" });
+  }, 3000);
+}));
+```

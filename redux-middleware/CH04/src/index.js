@@ -51,5 +51,5 @@ store.dispatch(new Promise((resolve, reject) => {
   setTimeout(() => {
     resolve({ type: "ADD" });
   }, 3000);
-}))
+}));
 // store.dispatch((dispatch) => { setTimeout(() => dispatch({ type: "SUB" }), 3000) });
