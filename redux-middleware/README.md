@@ -28,3 +28,8 @@ let thunk = store => next => action => {
 
 store.dispatch((dispatch) => { setTimeout(() => dispatch({ type: "SUB" }), 3000) });
 ```
+
+------
+
+### CH04：实现redux-promise
+
