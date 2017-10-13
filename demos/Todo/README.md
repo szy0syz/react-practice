@@ -19,3 +19,4 @@
 4. 创建一个panel，然后创建三个子元素heading、body和footer：`.panel>.panel-heading+.panel.body+.panel.footer`
 5. 使用bootstrap用grid居中实现为：1创建一个.container，再创建.row，最后创建.col-md-6，此时.col在用了50%的row且占6个(总的12格)，所以再给.col加一个offset-3的类即可让内容向右移动3格，这样内容就在中间了。实现：`.container>.row>.col-md-6.col-md-offset-3`
 6. 把刚刚的panel移到容器内部
+7. 
