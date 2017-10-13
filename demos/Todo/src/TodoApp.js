@@ -12,7 +12,21 @@ export default class TodoApp extends React.Component {
         { id: Date.now(), title: '吃水了吗', completed: false }
       ]
     };
+  };
+
+  addTodo = (todo) => {
+    //  todo.id = Date.now();
+    //  todo.completed = false;  // 这种写法太土，不时尚。
+    // 时尚点的写法，fashion！ 但这个只是ES5
+    //todo = Object.assign({}, { id: Date.now(), completed: false }, todo);
+    // 来个更时尚点的，ES6的。
+    todo = { id: Date.now(), completed: false, ...todo };
+    let todos = this.state.todos;
+    todos.push(todo);
+    // 体现redux的state的不可变性
+    this.setState({ todos });
   }
+
   render() {
     let main = (
       <ul className="list-group">
@@ -27,7 +41,7 @@ export default class TodoApp extends React.Component {
           <div className="col-md-6 col-md-offset-3">
             <div className="panel panel-default">
               <div className="panel-heading">
-                <TodoHeader />
+                <TodoHeader addTodo={this.addTodo} />
               </div>
               <div className="panel-body">
                 {main}
