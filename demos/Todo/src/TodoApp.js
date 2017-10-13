@@ -7,9 +7,9 @@ export default class TodoApp extends React.Component {
     super();
     this.state = {
       todos: [
-        { id: Date.now(), title: '吃药了吗', completed: false },
-        { id: Date.now(), title: '吃饭了吗', completed: false },
-        { id: Date.now(), title: '吃水了吗', completed: false }
+        { id: Math.floor(Math.random()*1000000), title: '吃药了吗', completed: false },
+        { id: Math.floor(Math.random()*1000000), title: '吃饭了吗', completed: true },
+        { id: Math.floor(Math.random()*1000000), title: '吃水了吗', completed: false }
       ]
     };
   };
@@ -27,11 +27,22 @@ export default class TodoApp extends React.Component {
     this.setState({ todos });
   }
 
+  toggleTodo = (id) => {
+    let todos = this.state.todos;
+    todos = todos.map(todo => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    }); // 注意：这里会返回一个新的todos的数组，正好忙住redux的不克可变要求
+    this.setState({ todos });
+  }
+
   render() {
     let main = (
       <ul className="list-group">
         {
-          this.state.todos.map((todo, index) => <TodoItem key={index} todo={todo} />)
+          this.state.todos.map((todo, index) => <TodoItem key={index} todo={todo} toggle={this.toggleTodo} />)
         }
       </ul>
     )
