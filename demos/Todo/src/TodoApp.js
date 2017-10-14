@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import TodoHeader from './components/TodoHeader';
 import TodoItem from './components/TodoItem';
 import TodoFooter from './components/TodoFooter';
+import * as FilterTypes from './filterTypes';
 export default class TodoApp extends React.Component {
   constructor() {
     super();
@@ -11,7 +12,8 @@ export default class TodoApp extends React.Component {
         { id: Math.floor(Math.random() * 1000000), title: '吃药了吗', completed: false },
         { id: Math.floor(Math.random() * 1000000), title: '吃饭了吗', completed: true },
         { id: Math.floor(Math.random() * 1000000), title: '吃水了吗', completed: false }
-      ]
+      ],
+      filterType: FilterTypes.ALL
     };
   };
 
@@ -56,9 +58,23 @@ export default class TodoApp extends React.Component {
     this.setState({ todos });
   }
 
+  changeFilterType = (filterType) => {
+    this.setState({ filterType });
+  }
+
   render() {
     let todos = this.state.todos;
     let activeTodoCount = todos.reduce((count, todo) => count + (todo.completed ? 0 : 1), 0);
+    let showTodos = todos.filter((todo) => {
+      switch (this.state.filterType) {
+        case FilterTypes.ACTIVE:
+          return todo.completed === false;
+        case FilterTypes.COMPLETED:
+          return todo.completed === true;
+        default:
+          return true;
+      }
+    });
     let main = (
       <ul className="list-group">
         {
@@ -71,8 +87,8 @@ export default class TodoApp extends React.Component {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{activeTodoCount === 0 ? '全部取消' : '全部选中'}
           </li> : null
         }
-        {
-          this.state.todos.map((todo, index) => <TodoItem
+        {// this.state.todos.map((todo, index) => <TodoItem
+          showTodos.map((todo, index) => <TodoItem
             key={index}
             todo={todo}
             toggle={this.toggleTodo}
@@ -81,6 +97,7 @@ export default class TodoApp extends React.Component {
         }
       </ul>
     )
+
     return (
       <div className="container-fluid" style={{ marginTop: 20 }}>
         <div className="row">
@@ -93,7 +110,11 @@ export default class TodoApp extends React.Component {
                 {main}
               </div>
               <div className="panel-footer">
-                <TodoFooter activeTodoCount={activeTodoCount} />
+                <TodoFooter
+                  filterType={this.state.filterType}
+                  changeFilterType={this.changeFilterType}
+                  activeTodoCount={activeTodoCount}
+                />
               </div>
             </div>
           </div>
