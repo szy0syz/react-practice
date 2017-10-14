@@ -13,7 +13,7 @@ class TodoItem extends Component {
             {todo.title}
           </div>
           <div className="col-md-1">
-            <button className="btn btn-danger btn-xs">X</button>
+            <button onClick={() => this.props.remove(todo.id)} className="btn btn-danger btn-xs">X</button>
           </div>
         </div>
       </li>

@@ -7,9 +7,9 @@ export default class TodoApp extends React.Component {
     super();
     this.state = {
       todos: [
-        { id: Math.floor(Math.random()*1000000), title: '吃药了吗', completed: false },
-        { id: Math.floor(Math.random()*1000000), title: '吃饭了吗', completed: true },
-        { id: Math.floor(Math.random()*1000000), title: '吃水了吗', completed: false }
+        { id: Math.floor(Math.random() * 1000000), title: '吃药了吗', completed: false },
+        { id: Math.floor(Math.random() * 1000000), title: '吃饭了吗', completed: true },
+        { id: Math.floor(Math.random() * 1000000), title: '吃水了吗', completed: false }
       ]
     };
   };
@@ -38,11 +38,23 @@ export default class TodoApp extends React.Component {
     this.setState({ todos });
   }
 
+  removeTodo = (id) => {
+    let todos = this.state.todos;
+    let index = todos.findIndex(todo => todo.id === id);
+    todos.splice(index, 1);
+    this.setState({ todos });
+  }
+
   render() {
     let main = (
       <ul className="list-group">
         {
-          this.state.todos.map((todo, index) => <TodoItem key={index} todo={todo} toggle={this.toggleTodo} />)
+          this.state.todos.map((todo, index) => <TodoItem
+            key={index}
+            todo={todo}
+            toggle={this.toggleTodo}
+            remove={this.removeTodo}
+          />)
         }
       </ul>
     )
