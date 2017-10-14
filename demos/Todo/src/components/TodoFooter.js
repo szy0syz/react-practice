@@ -6,7 +6,13 @@ export default class TodoFooter extends Component {
     return (
       <div className="row">
         <div className="col-md-3">
-          <a style={{ textDecoration: 'none' }}>待办事项 <span className="badge">{this.props.activeTodoCount}</span></a>
+          {
+            this.props.activeTodoCount > 0 ? <div style={{ height: '30px', lineHeight: '30px' }}>
+            <a style={{ textDecoration: 'none' }}>待办事项 <span className="badge">{this.props.activeTodoCount}</span></a>
+          </div> : null
+          }
+          
+
         </div>
         <div className="col-md-6 text-center">
           <button
@@ -26,8 +32,14 @@ export default class TodoFooter extends Component {
             已完成
           </button>
         </div>
-        <div className="col-md-3">
-
+        <div className="col-md-3 text-right">
+          {
+            this.props.completedTodoCount > 0 ? <button
+            onClick={this.props.clearCompleted}
+            className="btn btn-danger btn-sm">
+            删除已完成
+          </button> : null
+          }
         </div>
       </div>
     );

@@ -62,9 +62,16 @@ export default class TodoApp extends React.Component {
     this.setState({ filterType });
   }
 
+  clearCompleted = () => {
+    let todos = this.state.todos;
+    todos = todos.filter(todo => todo.completed === false);
+    this.setState({ todos });
+  }
+
   render() {
     let todos = this.state.todos;
     let activeTodoCount = todos.reduce((count, todo) => count + (todo.completed ? 0 : 1), 0);
+    let completedTodoCount = todos.length - activeTodoCount;
     let showTodos = todos.filter((todo) => {
       switch (this.state.filterType) {
         case FilterTypes.ACTIVE:
@@ -111,6 +118,8 @@ export default class TodoApp extends React.Component {
               </div>
               <div className="panel-footer">
                 <TodoFooter
+                  completedTodoCount={completedTodoCount}
+                  clearCompleted={this.clearCompleted}
                   filterType={this.state.filterType}
                   changeFilterType={this.changeFilterType}
                   activeTodoCount={activeTodoCount}
