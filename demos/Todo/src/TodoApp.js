@@ -2,6 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import TodoHeader from './components/TodoHeader';
 import TodoItem from './components/TodoItem';
+import TodoFooter from './components/TodoFooter';
 export default class TodoApp extends React.Component {
   constructor() {
     super();
@@ -92,7 +93,7 @@ export default class TodoApp extends React.Component {
                 {main}
               </div>
               <div className="panel-footer">
-
+                <TodoFooter activeTodoCount={activeTodoCount} />
               </div>
             </div>
           </div>
