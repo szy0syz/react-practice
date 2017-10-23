@@ -10,17 +10,24 @@
   <title>Fake-React App</title>
 
   <style type="text/css">
-    .wrapper{
-      border: 1px solid #000;
-      height: 100px;
+    .wrapper {
+      /* border: 1px solid #000; */
+
+      /* height: 100px;
       width: 160px;
       position: absolute;
       left: 50%;
       margin-left: -100px;
-      line-height: 100px;
+      line-height: 100px; */
+
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+      position: absolute;
     }
 
-    .like-btn{
+    .like-btn {
       width: 70px;
       height: 30px;
       margin-left: 5px;
@@ -30,15 +37,7 @@
 
 <body>
   <div class='wrapper'>
-    <button class='like-btn'>
-      <span class='like-text'>点赞</span>
-      <span>👍</span>
-    </button>
-    <button class='like-btn'>
-      <span class='like-text'>点赞</span>
-      <span>👍</span>
-    </button>
-  </div>
+    
 </body>
 
 </html>
