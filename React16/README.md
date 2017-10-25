@@ -4,6 +4,13 @@
 
 ## 01. 用 `Error Boundary` 处理错误
 
+### 使用方法
+
+1. 新建ErrorBoundary类组件
+2. 在其构造函数中初始化`this.state = { hasError: false };`
+3. `componentDidCatch(err, info) {this.setState({ hasError: true });}`
+4. 在render中检测`this.state.hasError`是否为true，是就错误处理，不是就返回`return this.props.children;`
+5. 然后用这个组件包裹可能会出错的组件
 
 ## 02. 在 `render` 中返回没有容器元素的多个元素
 
